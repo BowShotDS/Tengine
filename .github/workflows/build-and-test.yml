@@ -21,10 +21,6 @@ jobs:
       runs-on: label-1
       steps:
       - uses: actions/checkout@v2.3.4
-      - name: update
-        run: sudo apt-get update
-      - name: depends
-        run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev
       - name: configure
         run: mkdir build && cd build && cmake -DTENGINE_BUILD_TESTS=ON ..
       - name: build
