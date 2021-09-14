@@ -39,7 +39,7 @@ jobs:
           ln -s ${actions}/ci_test/models_test/ models
           ln -s ${actions}/ci_test/images/      images
           ln -s ${actions}/ci_test/data_x86/    data
-          mv onnx_op_test_data onnx_node            
+          ln -s ${actions}/ci_test/onnx_op_test_data onnx_node            
       - name: test-models
         run: |
           chmod +x ./tests/test.sh
