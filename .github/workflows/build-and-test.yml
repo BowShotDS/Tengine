@@ -36,7 +36,7 @@ jobs:
         run: |
           cd build
           actions=/home/dongdong/actions-runner
-          ln -s ${actions}/ci_test/models_test/ models
+          ln -s ${actions}/ci_test/model_test/ models
           ln -s ${actions}/ci_test/images/      images
           ln -s ${actions}/ci_test/data_x86/    data
       - name: test-models
