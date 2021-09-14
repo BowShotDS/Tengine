@@ -35,9 +35,10 @@ jobs:
       - name: test-data
         run: |
           cd build
-          wget -c http://8.136.149.78/download/ci_data/images.zip && unzip images.zip && rm images.zip
-          wget -c http://8.136.149.78/download/ci_data/data_x86.zip && unzip data_x86.zip && rm data_x86.zip && mv data_x86 data
-          wget -c http://8.136.149.78/download/ci_data/model_test.zip && unzip model_test.zip && rm model_test.zip && mv model_test model
+          actions=/home/dongdong/actions-runner
+          ln -s ${actions}/ci_test/models_test/ models
+          ln -s ${actions}/ci_test/images/      images
+          ln -s ${actions}/ci_test/data_x86/    data
           git clone https://github.com/BUG1989/onnx_op_test_data.git
           mv onnx_op_test_data onnx_node            
       - name: test-models
