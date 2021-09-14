@@ -28,8 +28,8 @@ jobs:
       - name: optest
         run: |
           cd build
-          git clone https://github.com/BUG1989/onnx_op_test_data.git
-          mv onnx_op_test_data onnx_node
+          actions=/home/dongdong/actions-runner
+          ln -s ${actions}/ci_test/onnx_op_test_data/ onnx_node
           export TG_DEBUG_REF=1
           ctest --output-on-failure
       - name: test-data
