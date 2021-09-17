@@ -516,7 +516,7 @@ int onnx_serializer::load_graph_node(ir_graph_t* graph, const onnx::GraphProto& 
             int tensor_id = get_ir_tensor_index_from_name(graph, input_name.c_str());
             ir_tensor_t* tensor = get_ir_graph_tensor(graph, tensor_id);
             tensor_check[tensor->name] = tensor_check[tensor->name] + 1;
-            set_ir_node_input_tensor(ir_node, j, tensor);
+            set_ir_node_input_tensor(ir_node, ir_node->input_num, tensor);
         }
 
         for (int j = 0; j < onnx_node.output_size(); j++)
@@ -2008,7 +2008,8 @@ static int load_deconv(ir_graph_t* graph, ir_node_t* node, const onnx::NodeProto
         {
             int* dim = tensor->dims;
             /* onnx hide the output channel in weight ..*/
-            deconv_param->num_output = dim[1];
+            /* The number of channels in the output should be equal to W.shape[1] * group */
+            deconv_param->num_output = dim[1] * deconv_param->group;
             deconv_param->kernel_h = dim[2];
             deconv_param->kernel_w = dim[3];
         }
