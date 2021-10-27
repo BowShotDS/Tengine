@@ -20,7 +20,7 @@ jobs:
   linux-x64-cpu-gcc-test-1:
       runs-on: label-1
       steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - name: configure
         run: mkdir build && cd build && cmake -DTENGINE_BUILD_TESTS=ON ..
       - name: build
